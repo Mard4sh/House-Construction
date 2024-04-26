@@ -76,4 +76,39 @@ class CalculatorGUI extends JFrame implements ActionListener
 
         setVisible(true);
     }
+
+    // Создание панели для элемента
+    private JPanel createElementPanel(String elementName, String[] options, double[] prices) 
+    {
+        JPanel panel = new JPanel(new GridLayout(0, 1));
+        panel.setBorder(BorderFactory.createTitledBorder(elementName));
+        ButtonGroup group = new ButtonGroup();
+
+        JRadioButton[] buttons = new JRadioButton[options.length];
+        for (int i = 0; i < options.length; i++) {
+            buttons[i] = new JRadioButton(options[i]);
+            buttons[i].setActionCommand(String.valueOf(prices[i]));
+            group.add(buttons[i]);
+            panel.add(buttons[i]);
+        }
+
+        // Сохранение ссылок на кнопки для каждого элемента
+        switch (elementName)
+        {
+            case "Фундамент":
+                foundationButtons = buttons;
+                break;
+            case "Стены":
+                wallButtons = buttons;
+                break;
+            case "Крыша":
+                roofButtons = buttons;
+                break;
+            case "Отделка":
+                finishingButtons = buttons;
+                break;
+        }
+
+        return panel;
+    }
 }
