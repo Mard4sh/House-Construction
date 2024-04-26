@@ -111,4 +111,34 @@ class CalculatorGUI extends JFrame implements ActionListener
 
         return panel;
     }
+    // Выполнение нажатия кнопки
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == calculateButton) {
+            calculateTotalCost();
+        }
+    }
+
+    // Метод - калькулятор суммы
+    private void calculateTotalCost() {
+        double area = Double.parseDouble(areaField.getText());
+
+        double totalCost = 0;
+        totalCost += calculateElementCost(foundationButtons, area);
+        totalCost += calculateElementCost(wallButtons, area);
+        totalCost += calculateElementCost(roofButtons, area);
+        totalCost += calculateElementCost(finishingButtons, area);
+
+        resultArea.setText("Общая стоимость строительства: " + totalCost + " руб.");
+    }
+
+    // Выбор элементов (нажатие радиокнопки)
+    private double calculateElementCost(JRadioButton[] buttons, double area) {
+        for (JRadioButton button : buttons) {
+            if (button.isSelected()) {
+                double pricePerSquareMeter = Double.parseDouble(button.getActionCommand());
+                return area * pricePerSquareMeter;
+            }
+        }
+        return 0;
+    }
 }
