@@ -12,6 +12,17 @@ public class Main
     }
 }
 
+// Абстрактный класс для элемента конструкции
+abstract class ConstructionElement {
+    String name;
+    double pricePerSquareMeter;
+
+    public ConstructionElement(String name, double pricePerSquareMeter) {
+        this.name = name;
+        this.pricePerSquareMeter = pricePerSquareMeter;
+    }
+}
+
 // Главное окно
 class CalculatorGUI extends JFrame implements ActionListener 
 {
