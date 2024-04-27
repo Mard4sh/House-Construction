@@ -12,7 +12,7 @@ public class Main
     }
 }
 
-// Абстрактный класс для элемента конструкции
+// Абстрактный класс
 abstract class ConstructionElement {
     String name;
     double pricePerSquareMeter;
@@ -20,6 +20,52 @@ abstract class ConstructionElement {
     public ConstructionElement(String name, double pricePerSquareMeter) {
         this.name = name;
         this.pricePerSquareMeter = pricePerSquareMeter;
+    }
+    public abstract double calculateCost(double area);
+}
+
+// Элементы
+class Foundation extends ConstructionElement {
+    public Foundation(String name, double pricePerSquareMeter) {
+        super(name, pricePerSquareMeter);
+    }
+
+    @Override
+    public double calculateCost(double area) {
+        return area * pricePerSquareMeter;
+    }
+}
+
+class Wall extends ConstructionElement {
+    public Wall(String name, double pricePerSquareMeter) {
+        super(name, pricePerSquareMeter);
+    }
+
+    @Override
+    public double calculateCost(double area) {
+        return area * pricePerSquareMeter;
+    }
+}
+
+class Roof extends ConstructionElement {
+    public Roof(String name, double pricePerSquareMeter) {
+        super(name, pricePerSquareMeter);
+    }
+
+    @Override
+    public double calculateCost(double area) {
+        return area * pricePerSquareMeter;
+    }
+}
+
+class Finishing extends ConstructionElement {
+    public Finishing(String name, double pricePerSquareMeter) {
+        super(name, pricePerSquareMeter);
+    }
+
+    @Override
+    public double calculateCost(double area) {
+        return area * pricePerSquareMeter;
     }
 }
 
