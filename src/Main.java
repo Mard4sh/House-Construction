@@ -12,59 +12,74 @@ public class Main
     }
 }
 
-// Абстрактный класс
-abstract class ConstructionElement {
+// Абстрактный класс для элемента конструкции
+abstract class ConstructionElement 
+{
     String name;
     double pricePerSquareMeter;
 
-    public ConstructionElement(String name, double pricePerSquareMeter) {
+    public ConstructionElement(String name, double pricePerSquareMeter) 
+    {
         this.name = name;
         this.pricePerSquareMeter = pricePerSquareMeter;
     }
+    // Абстрактный метод подсчёта суммы
     public abstract double calculateCost(double area);
 }
 
-// Элементы
-class Foundation extends ConstructionElement {
-    public Foundation(String name, double pricePerSquareMeter) {
+// Конкретные классы элементов конструкции
+// Фундамент
+class Foundation extends ConstructionElement 
+{
+    public Foundation(String name, double pricePerSquareMeter) 
+    {
         super(name, pricePerSquareMeter);
     }
 
-    @Override
-    public double calculateCost(double area) {
+    public double calculateCost(double area) 
+    {
         return area * pricePerSquareMeter;
     }
 }
 
-class Wall extends ConstructionElement {
-    public Wall(String name, double pricePerSquareMeter) {
+// Стены
+class Wall extends ConstructionElement 
+{
+    public Wall(String name, double pricePerSquareMeter) 
+    {
         super(name, pricePerSquareMeter);
     }
 
-    @Override
-    public double calculateCost(double area) {
+    public double calculateCost(double area) 
+    {
         return area * pricePerSquareMeter;
     }
 }
 
-class Roof extends ConstructionElement {
-    public Roof(String name, double pricePerSquareMeter) {
+// Крыша
+class Roof extends ConstructionElement 
+{
+    public Roof(String name, double pricePerSquareMeter) 
+    {
         super(name, pricePerSquareMeter);
     }
 
-    @Override
-    public double calculateCost(double area) {
+    public double calculateCost(double area) 
+    {
         return area * pricePerSquareMeter;
     }
 }
 
-class Finishing extends ConstructionElement {
-    public Finishing(String name, double pricePerSquareMeter) {
+// Отделка
+class Finishing extends ConstructionElement 
+{
+    public Finishing(String name, double pricePerSquareMeter) 
+    {
         super(name, pricePerSquareMeter);
     }
 
-    @Override
-    public double calculateCost(double area) {
+    public double calculateCost(double area) 
+    {
         return area * pricePerSquareMeter;
     }
 }
@@ -114,7 +129,6 @@ class CalculatorGUI extends JFrame implements ActionListener
         areaPanel.add(new JLabel("Площадь дома (кв.м.):"));
         areaPanel.add(areaField);
         add(areaPanel);
-
         
         // Кнопка
         JPanel buttonPanel = new JPanel();
@@ -168,15 +182,19 @@ class CalculatorGUI extends JFrame implements ActionListener
 
         return panel;
     }
+    
     // Выполнение нажатия кнопки
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == calculateButton) {
+    public void actionPerformed(ActionEvent e) 
+    {
+        if (e.getSource() == calculateButton) 
+        {
             calculateTotalCost();
         }
     }
 
     // Метод - калькулятор суммы
-    private void calculateTotalCost() {
+    private void calculateTotalCost() 
+    {
         double area = Double.parseDouble(areaField.getText());
 
         double totalCost = 0;
@@ -189,9 +207,12 @@ class CalculatorGUI extends JFrame implements ActionListener
     }
 
     // Выбор элементов (нажатие радиокнопки)
-    private double calculateElementCost(JRadioButton[] buttons, double area) {
-        for (JRadioButton button : buttons) {
-            if (button.isSelected()) {
+    private double calculateElementCost(JRadioButton[] buttons, double area) 
+    {
+        for (JRadioButton button : buttons) 
+        {
+            if (button.isSelected()) 
+            {
                 double pricePerSquareMeter = Double.parseDouble(button.getActionCommand());
                 return area * pricePerSquareMeter;
             }
